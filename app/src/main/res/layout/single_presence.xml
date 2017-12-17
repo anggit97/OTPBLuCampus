@@ -1,0 +1,44 @@
+<android.support.v7.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5sp">
+
+        <TextView
+            android:id="@+id/tvNumbering"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tvtUsernamePeserta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="anggitprayogo"
+            android:layout_weight="4"/>
+
+        <TextView
+            android:id="@+id/tvNamaPeserta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anggit Prayogo"
+            android:layout_weight="4"/>
+
+        <TextView
+            android:id="@+id/tvStatusPeserta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum diabsen"
+            android:layout_weight="3"
+            />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+

@@ -1,0 +1,23 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/colorPrimary"></item>
+    <item>
+        <bitmap android:src="@drawable/lecture"
+            android:gravity="center"
+            android:alpha="0.1"></bitmap>
+    </item>
+    <!--<item android:top="-300dp"-->
+        <!--android:bottom="50dp"-->
+        <!--android:left="0dp"-->
+        <!--android:right="-300dp">-->
+        <!--<rotate-->
+            <!--android:fromDegrees="-30"-->
+            <!--android:pivotX="0%"-->
+            <!--android:pivotY="110%">-->
+            <!--<shape-->
+                <!--android:shape="rectangle">-->
+                <!--<solid-->
+                    <!--android:color="#fff"/>-->
+            <!--</shape>-->
+        <!--</rotate>-->
+    <!--</item>-->
+</layer-list>

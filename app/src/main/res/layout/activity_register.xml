@@ -1,0 +1,205 @@
+<ScrollView
+    android:id="@+id/scrollViewRegister"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:fbutton="http://schemas.android.com/tools"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:elevation="230dp"
+            android:src="@drawable/guest"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textAlignment="center"
+            style="@style/AlertDialog.AppCompat"
+            android:textColor="#fff"
+            android:background="#FF0000"
+            android:padding="10dp"
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:id="@+id/result"
+            android:layout_marginBottom="10dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:theme="@style/TextLabel">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                app:met_baseColor="#FFF"
+                app:met_primaryColor="#FFF"
+                app:met_errorColor="#FFF"
+                android:drawableStart="@drawable/ic_email_white_24dp"
+                android:drawableLeft="@drawable/ic_email_white_24dp"
+                android:drawablePadding="20dp"
+                android:inputType="textEmailAddress"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:theme="@style/TextLabel"
+            app:passwordToggleTint="#fff">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_account_circle_white_24dp"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/ic_account_circle_white_24dp"
+                android:hint="Username"
+                android:inputType="text"
+                app:met_baseColor="#FFF"
+                app:met_errorColor="#FFF"
+                app:met_primaryColor="#FFF" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:theme="@style/TextLabel"
+            app:passwordToggleTint="#fff">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etTelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_phone_android_white_24dp"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/ic_phone_android_white_24dp"
+                android:hint="No. Hp"
+                android:inputType="text"
+                app:met_baseColor="#FFF"
+                app:met_errorColor="#FFF"
+                app:met_primaryColor="#FFF" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:theme="@style/TextLabel"
+            app:passwordToggleTint="#fff">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Lengkap"
+                app:met_baseColor="#FFF"
+                app:met_primaryColor="#FFF"
+                app:met_errorColor="#FFF"
+                android:drawableStart="@drawable/ic_account_circle_white_24dp"
+                android:drawableLeft="@drawable/ic_account_circle_white_24dp"
+                android:drawablePadding="20dp"
+                android:inputType="text"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:theme="@style/TextLabel"
+            app:passwordToggleTint="#fff">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Alamat"
+                app:met_baseColor="#FFF"
+                app:met_primaryColor="#FFF"
+                app:met_errorColor="#FFF"
+                android:drawableStart="@drawable/ic_place_white_24dp"
+                android:drawableLeft="@drawable/ic_place_white_24dp"
+                android:drawablePadding="20dp"
+                android:inputType="textPassword"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:theme="@style/TextLabel"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#fff">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_https_white_24dp"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/ic_https_white_24dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                app:met_baseColor="#FFF"
+                app:met_errorColor="#FFF"
+                app:met_primaryColor="#FFF" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btnSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            fbutton:buttonColor="@color/color_concrete"
+            fbutton:shadowColor="@color/fbutton_color_asbestos"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="DAFTAR"
+            android:textColor="#fff" />
+
+        <ProgressBar
+            android:id="@+id/pCircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</ScrollView>

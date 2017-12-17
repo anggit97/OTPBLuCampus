@@ -1,0 +1,61 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tvCountDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="40"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvTelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Masukan Kode OTP"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/tvCountDown"
+        android:textSize="20dp" />
+
+    <com.raycoarana.codeinputview.CodeInputView
+        android:id="@+id/codeInput"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:underline_color="#457ad1"
+        app:underline_selected_color="#9e1ace"
+        app:code_text_color="#b12eff"
+        app:error_color="#77ce9d"
+        app:input_type="numeric"
+        app:length_of_code="6"
+        android:layout_below="@+id/tvTelp"
+        />
+
+    <TextView
+        android:id="@+id/tvNotice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Kode telah dikirimkan lewat SMS"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/codeInput"
+        android:textSize="16dp"/>
+
+    <info.hoang8f.widget.FButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRetryOTP"
+        android:text="Kirim Ulang"
+        android:textColor="#fff"
+        android:layout_below="@id/tvNotice"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"/>
+
+</RelativeLayout>
