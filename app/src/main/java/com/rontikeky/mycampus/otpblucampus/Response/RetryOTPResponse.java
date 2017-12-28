@@ -12,7 +12,7 @@ public class RetryOTPResponse {
     @SerializedName("message")
     public String message;
     @SerializedName("otp")
-    public Integer otp;
+    public String otp;
 
     public RetryOTPResponse(String status, String message) {
         this.status = status;
@@ -27,7 +27,7 @@ public class RetryOTPResponse {
         return message;
     }
 
-    public Integer getOtp() {
+    public String getOtp() {
         return otp;
     }
 

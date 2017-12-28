@@ -7,13 +7,13 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class RetryOTPRequest {
-    @SerializedName("username")
-    public String username;
+    @SerializedName("email")
+    public String email;
     @SerializedName("password")
     public String password;
 
-    public RetryOTPRequest(String username, String password) {
-        this.username = username;
+    public RetryOTPRequest(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 }

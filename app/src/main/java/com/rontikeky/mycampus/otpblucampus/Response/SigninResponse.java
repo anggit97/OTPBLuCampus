@@ -15,7 +15,7 @@ public class SigninResponse {
     @SerializedName("userId")
     public String   userId;
     @SerializedName("otp")
-    public Integer otp;
+    public String otp;
     @SerializedName("email")
     public String email;
     @SerializedName("telp")
@@ -38,7 +38,7 @@ public class SigninResponse {
         return userId;
     }
 
-    public Integer getOtp() {
+    public String getOtp() {
         return otp;
     }
 

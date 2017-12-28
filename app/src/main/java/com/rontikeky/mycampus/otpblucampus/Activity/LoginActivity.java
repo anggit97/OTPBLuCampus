@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.rontikeky.mycampus.otpblucampus.Algorithm.DecryptMessage;
+import com.rontikeky.mycampus.otpblucampus.Algorithm.DiffieHelmanGenerator;
 import com.rontikeky.mycampus.otpblucampus.Config.Constant;
 import com.rontikeky.mycampus.otpblucampus.Config.FontHandler;
 import com.rontikeky.mycampus.otpblucampus.Config.PrefHandler;
@@ -40,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
 
     Boolean valid;
 
+    String key;
+    String plainTextOTP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Buat objek FontHandler
         fontHandler =   new FontHandler(this);
+
         //Mendapatkan nilai font dari Class FontHandler
         fontMedium  =   fontHandler.getFont();
         fontBold    =   fontHandler.getFontBold();
@@ -65,6 +71,10 @@ public class LoginActivity extends AppCompatActivity {
         tvRegister.setTypeface(fontBold);
 
         PrefHandler.init(LoginActivity.this);
+
+
+        key = DiffieHelmanGenerator.diffieHKeyGenerator().trim();
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,14 +132,17 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (response.body().getStatus().equalsIgnoreCase("true")){
 
-                        Log.d("DEBUG 2", String.valueOf(response.body().getOtp()));
+                        //Method untuk melakukan dekripsi pada kode otp
+                        String hasil = doDecryptMessage(key, response.body().getOtp().toString());
+
+                        Log.d("DEBUG 2", hasil);
                         PrefHandler.setId(response.body().getUserId());
                         PrefHandler.setEmailKey(response.body().getEmail());
                         PrefHandler.setTelpKey(response.body().getTelp());
                         PrefHandler.setPassKey(password);
 
                         Intent  toVerifyActivity    =   new Intent(LoginActivity.this, VerifyOTP.class);
-                        toVerifyActivity.putExtra(Constant.OTP_KEY,""+response.body().getOtp());
+                        toVerifyActivity.putExtra(Constant.OTP_KEY,hasil);
                         startActivity(toVerifyActivity);
                         finish();
                     }else{
@@ -139,8 +152,8 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
                     //COMPLETED::DOING SOMETHING IF FAILURE
                     tvResult.setVisibility(View.VISIBLE);
-                    tvResult.setText("Gagal Login");
-                    Toast.makeText(LoginActivity.this,"Gagal Login", Toast.LENGTH_SHORT).show();
+                    tvResult.setText("Gagal Login xxx");
+                    Toast.makeText(LoginActivity.this,"Gagal Login xxx", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -153,6 +166,20 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this,"Gagal Login", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private String doDecryptMessage(String key, String chipperText) {
+
+        try {
+            DecryptMessage  decryptMessage  =   new DecryptMessage();
+            plainTextOTP    =   decryptMessage.DecryptMessage(chipperText, key);
+            Log.d("Plaintext", plainTextOTP);
+            return plainTextOTP;
+        } catch (Exception e) {
+            Log.d("Plaintext ERROR", e.getMessage());
+        }
+
+        return key;
     }
 
     private boolean isValid(){

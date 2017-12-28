@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.raycoarana.codeinputview.CodeInputView;
 import com.raycoarana.codeinputview.OnCodeCompleteListener;
+import com.rontikeky.mycampus.otpblucampus.Algorithm.DecryptMessage;
+import com.rontikeky.mycampus.otpblucampus.Algorithm.DiffieHelmanGenerator;
 import com.rontikeky.mycampus.otpblucampus.Config.Constant;
 import com.rontikeky.mycampus.otpblucampus.Config.PrefHandler;
 import com.rontikeky.mycampus.otpblucampus.R;
@@ -34,7 +36,7 @@ public class VerifyOTP extends AppCompatActivity {
     CodeInputView   mCodeInputView;
     FButton btnSendAgain;
 
-    String otpKode, telp, email;
+    String otpKode, telp, email, plainTextOTP, key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,8 @@ public class VerifyOTP extends AppCompatActivity {
             otpKode =   extras.getString(Constant.OTP_KEY);
         }
 
+        key = DiffieHelmanGenerator.diffieHKeyGenerator().trim();
+
         Toast.makeText(VerifyOTP.this, otpKode, Toast.LENGTH_SHORT).show();
 
         btnSendAgain.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +89,7 @@ public class VerifyOTP extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        if (mCodeInputView.getCode().equalsIgnoreCase(otpKode)) {
+                        if (mCodeInputView.getCode().equalsIgnoreCase(otpKode.trim())) {
                             PrefHandler.setIsPassOtp("1");
                             Intent toMainActivity   =   new Intent(VerifyOTP.this, MainActivity.class);
                             startActivity(toMainActivity);
@@ -121,7 +125,7 @@ public class VerifyOTP extends AppCompatActivity {
     private void doSendAgain(){
         BlucampusClient client  = ServiceGenerator.createService(BlucampusClient.class);
 
-        RetryOTPRequest retryOTPRequest =   new RetryOTPRequest(PrefHandler.getId(),PrefHandler.getPassKey());
+        RetryOTPRequest retryOTPRequest =   new RetryOTPRequest(PrefHandler.getEmailKey(),PrefHandler.getPassKey());
 
         Call<RetryOTPResponse>  call    =   client.doRetryOTP(retryOTPRequest);
 
@@ -130,7 +134,7 @@ public class VerifyOTP extends AppCompatActivity {
             public void onResponse(Call<RetryOTPResponse> call, Response<RetryOTPResponse> response) {
                 Log.d("DEBUG 0",new Gson().toJson(response.body()));
                 if (response.isSuccessful()){
-                    otpKode =   ""+response.body().getOtp();
+                    otpKode =   doDecryptMessage(key, response.body().getOtp());
                 }else{
                     Log.d("DEBUG 2","GAGAL");
                 }
@@ -141,5 +145,19 @@ public class VerifyOTP extends AppCompatActivity {
                 Log.d("DEBUG 3",t.toString());
             }
         });
+    }
+
+    private String doDecryptMessage(String key, String chipperText) {
+
+        try {
+            DecryptMessage decryptMessage  =   new DecryptMessage();
+            plainTextOTP    =   decryptMessage.DecryptMessage(chipperText, key);
+            Log.d("Plaintext", plainTextOTP);
+            return plainTextOTP;
+        } catch (Exception e) {
+            Log.d("Plaintext ERROR", e.getMessage());
+        }
+
+        return key;
     }
 }
