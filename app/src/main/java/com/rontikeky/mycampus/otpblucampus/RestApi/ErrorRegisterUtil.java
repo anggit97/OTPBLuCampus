@@ -15,17 +15,17 @@ import retrofit2.Response;
 
 public class ErrorRegisterUtil {
 
-    public static RegisterErrorResponse parseError(Response<?> response) {
-        Converter<ResponseBody, RegisterErrorResponse> converter =
+    public static RegisterErrorResponse.Errors parseError(Response<?> response) {
+        Converter<ResponseBody, RegisterErrorResponse.Errors> converter =
                 ServiceGenerator.retrofit()
-                        .responseBodyConverter(RegisterErrorResponse.class, new Annotation[0]);
+                        .responseBodyConverter(RegisterErrorResponse.Errors.class, new Annotation[0]);
 
-        RegisterErrorResponse error;
+        RegisterErrorResponse.Errors error;
 
         try {
             error = converter.convert(response.errorBody());
         } catch (IOException e) {
-            return new RegisterErrorResponse();
+            return new RegisterErrorResponse().errors;
         }
 
         return error;

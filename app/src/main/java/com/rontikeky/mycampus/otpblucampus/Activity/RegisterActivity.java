@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.rontikeky.mycampus.otpblucampus.Config.FontHandler;
 import com.rontikeky.mycampus.otpblucampus.R;
 import com.rontikeky.mycampus.otpblucampus.Request.SignupRequest;
@@ -109,26 +112,43 @@ public class RegisterActivity extends AppCompatActivity {
                     startActivity(toLoginActivity);
                     finish();
                 }else{
-                    RegisterErrorResponse errorResponse = ErrorRegisterUtil.parseError(response);
-                    if (errorResponse.getEmail() != null){
+//                    RegisterErrorResponse.Errors errorResponse = ErrorRegisterUtil.parseError(response);
+//
+                    try {
+                        Log.d("DEBUG FAILED",new GsonBuilder().setPrettyPrinting().create().toJson(response.body()));
                         tvResult.setVisibility(View.VISIBLE);
                         scrollView.smoothScrollTo(0,0);
-                        etEmail.setError("Email sudah digunakan");
-                        tvResult.append("*Email sudah digunakan \n");
+                        tvResult.append("*Email atau Username sudah digunakan \n");
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
 
-                    if (errorResponse.getUsername() != null){
-                        tvResult.setVisibility(View.VISIBLE);
-                        scrollView.smoothScrollTo(0,0);
-                        etUsername.setError("Username sudah digunakan");
-                        tvResult.append("*Username sudah digunakan \n");
-                    }
+//                    if (!response.body().getMessage().isEmpty()) {
+//                        tvResult.setVisibility(View.VISIBLE);
+//                        scrollView.smoothScrollTo(0,0);
+//                        tvResult.append("*Email atau Username sudah digunakan \n");
+//                    }
+
+//                    if (errorResponse.getEmail() != null){
+//                        tvResult.setVisibility(View.VISIBLE);
+//                        scrollView.smoothScrollTo(0,0);
+//                        etEmail.setError("Email sudah digunakan");
+//                        tvResult.append("*Email sudah digunakan \n");
+//                    }
+//
+//                    if (errorResponse.getUsername() != null){
+//                        tvResult.setVisibility(View.VISIBLE);
+//                        scrollView.smoothScrollTo(0,0);
+//                        etUsername.setError("Username sudah digunakan");
+//                        tvResult.append("*Username sudah digunakan \n");
+//                    }
                 }
             }
 
             @Override
             public void onFailure(Call<SignupResponse> call, Throwable t) {
                 postProgress();
+                Log.d("DEBUG", t.getMessage());
                 Toast.makeText(RegisterActivity.this, "Gagal melakukan Login!", Toast.LENGTH_SHORT).show();
             }
         });

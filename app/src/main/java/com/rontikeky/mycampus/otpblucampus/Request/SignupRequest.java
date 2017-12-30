@@ -8,10 +8,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class SignupRequest {
 
+
     @SerializedName("username")
     public String username;
-    @SerializedName("nama")
-    public String nama;
+    @SerializedName("name")
+    public String name;
     @SerializedName("email")
     public String email;
     @SerializedName("tanggal_lahir")
@@ -23,9 +24,9 @@ public class SignupRequest {
     @SerializedName("password")
     public String password;
 
-    public SignupRequest(String username, String nama, String email, String tanggalLahir, String alamat, String telp, String password) {
+    public SignupRequest(String username, String name, String email, String tanggalLahir, String alamat, String telp, String password) {
         this.username = username;
-        this.nama = nama;
+        this.name = name;
         this.email = email;
         this.tanggalLahir = tanggalLahir;
         this.alamat = alamat;
