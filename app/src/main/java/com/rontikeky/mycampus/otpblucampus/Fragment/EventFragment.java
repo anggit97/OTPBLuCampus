@@ -73,6 +73,9 @@ public class EventFragment extends Fragment{
 
         mRecyclerView.setAdapter(mEventAdpater);
 
+        PrefHandler.init(getActivity());
+
+        tvUsername.setText(PrefHandler.getNameKey());
 
         //Buat objek FontHandler
         fontHandler =   new FontHandler(getActivity());

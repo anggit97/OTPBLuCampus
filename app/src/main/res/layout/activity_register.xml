@@ -149,7 +149,7 @@
                 android:drawableStart="@drawable/ic_place_white_24dp"
                 android:drawableLeft="@drawable/ic_place_white_24dp"
                 android:drawablePadding="20dp"
-                android:inputType="textPassword"/>
+                android:inputType="text"/>
 
         </android.support.design.widget.TextInputLayout>
 

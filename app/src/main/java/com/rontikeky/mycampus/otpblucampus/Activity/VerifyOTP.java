@@ -66,8 +66,6 @@ public class VerifyOTP extends AppCompatActivity {
 
         key = DiffieHelmanGenerator.diffieHKeyGenerator().trim();
 
-        Toast.makeText(VerifyOTP.this, otpKode, Toast.LENGTH_SHORT).show();
-
         btnSendAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +93,7 @@ public class VerifyOTP extends AppCompatActivity {
                             startActivity(toMainActivity);
                             finish();
                         }else{
+                            otpKode = "";
                             Toast.makeText(VerifyOTP.this, "Tunggu waktu habis untuk mengulangi", Toast.LENGTH_SHORT).show();
                             //Show error
                             mCodeInputView.setError("Kode OTP Salah");

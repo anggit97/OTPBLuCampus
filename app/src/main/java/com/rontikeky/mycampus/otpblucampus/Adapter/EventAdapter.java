@@ -77,7 +77,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
             holder.tvTanggal.setText(model.getTanggalAcara());
             holder.tvLokasi.setText(model.getTempatAcara());
             holder.tvIdEvent.setText(String.valueOf(model.getId()));
-            Glide.with(context).load("http://blucampus.anggitprayogo.com/"+model.getFotoAcara()).placeholder(R.drawable.guest).error(R.drawable.guest).into(holder.ivGambar);
+            Glide.with(context).load(model.getFotoAcara()).placeholder(R.drawable.guest).error(R.drawable.guest).into(holder.ivGambar);
         } catch (Exception e) {
             Log.d("DEBUG ID", e.toString());
         }

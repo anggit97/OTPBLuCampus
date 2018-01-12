@@ -20,6 +20,8 @@ public class SigninResponse {
     public String email;
     @SerializedName("telp")
     public String telp;
+    @SerializedName("nama")
+    public String nama;
 
     public SigninResponse(String status, String message) {
         this.status = status;
@@ -48,5 +50,9 @@ public class SigninResponse {
 
     public String getTelp() {
         return telp;
+    }
+
+    public String getNama() {
+        return nama;
     }
 }

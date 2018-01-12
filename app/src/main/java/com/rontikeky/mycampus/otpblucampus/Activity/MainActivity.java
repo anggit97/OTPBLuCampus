@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rontikeky.mycampus.otpblucampus.Config.PrefHandler;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentManager fragmentManager;
     Fragment fragment;
 
+    TextView tvEmailHeader, tvNameHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View    view    =   navigationView.getHeaderView(0);
         Menu    menu    =   navigationView.getMenu();
 //        MenuItem    target  =   menu.findItem(R.id.)
+
+        tvEmailHeader   =   (TextView)view.findViewById(R.id.emailHeader);
+        tvNameHeader    =   (TextView)view.findViewById(R.id.nameHeader);
+
+        tvEmailHeader.setText(PrefHandler.getEmailKey());
+        tvNameHeader.setText(PrefHandler.getNameKey());
 
         navigationView.setCheckedItem(R.id.nav_registered_event);
 

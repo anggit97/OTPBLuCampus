@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().hide();
+
         //Inisialisasi
         etEmail         =   (MaterialEditText)findViewById(R.id.etEmail);
         etPassword      =   (MaterialEditText)findViewById(R.id.etPassword);
@@ -125,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 postProgress();
 
-                Log.d("DEBUG 1", new Gson().toJson(response.body().getMessage()));
+                Log.d("DEBUG 1", new Gson().toJson(response.body()));
 
                 if (response.isSuccessful()){
                     //COMPLETED::DOING SOMETHING IF SUCCESS
@@ -140,6 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                         PrefHandler.setEmailKey(response.body().getEmail());
                         PrefHandler.setTelpKey(response.body().getTelp());
                         PrefHandler.setPassKey(password);
+                        PrefHandler.setNameKey(response.body().getNama());
 
                         Intent  toVerifyActivity    =   new Intent(LoginActivity.this, VerifyOTP.class);
                         toVerifyActivity.putExtra(Constant.OTP_KEY,hasil);

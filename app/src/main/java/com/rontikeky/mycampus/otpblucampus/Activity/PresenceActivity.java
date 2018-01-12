@@ -49,6 +49,8 @@ public class PresenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Inisialisasi
         mRecyclerView   =   (RecyclerView)findViewById(R.id.rvPresence);
         tvJudul         =   (TextView)findViewById(R.id.tvJudulEvent);
@@ -84,6 +86,12 @@ public class PresenceActivity extends AppCompatActivity {
 
         //Tarik data dari server berdasarkna idevent
         getDetailPresence(idEvent);
+    }
+
+    @Override
+    public boolean onNavigateUp(){
+        finish();
+        return true;
     }
 
     @Override

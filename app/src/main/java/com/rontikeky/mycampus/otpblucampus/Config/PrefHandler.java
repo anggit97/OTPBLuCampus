@@ -23,6 +23,7 @@ public class PrefHandler {
     private static final String EMAIL_KEY   =   "emailkey";
     private static final String TELP_KEY    =   "telpkey";
     private static final String PASS_KEY    =   "passkey";
+    private static final String NAME_KEY    =   "namekey";
 
     public PrefHandler(Context context) {
         this.context = context;
@@ -80,6 +81,15 @@ public class PrefHandler {
 
     public static void setPassKey(String passKey){
         editor.putString(PASS_KEY,passKey);
+        editor.commit();
+    }
+
+    public static String getNameKey() {
+        return sharedPreferences.getString(NAME_KEY,"");
+    }
+
+    public static void setNameKey(String nameKey){
+        editor.putString(NAME_KEY,nameKey);
         editor.commit();
     }
 

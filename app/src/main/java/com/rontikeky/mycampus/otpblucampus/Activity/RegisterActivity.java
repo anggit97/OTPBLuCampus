@@ -47,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        getSupportActionBar().setTitle("Registrasi EO");
 
         //Inisialisasi
         etUsername  =   (EditText)findViewById(R.id.etUsername);
