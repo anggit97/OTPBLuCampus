@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setCheckedItem(R.id.nav_registered_event);
 
-        //Listerner untuk Navigation drawer item
         navigationView.setNavigationItemSelectedListener(this);
 
         //Set Default Fragment yang ditampilkan

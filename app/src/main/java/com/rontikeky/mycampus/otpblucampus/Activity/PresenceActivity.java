@@ -1,11 +1,15 @@
 package com.rontikeky.mycampus.otpblucampus.Activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,15 +81,40 @@ public class PresenceActivity extends AppCompatActivity {
         btnScanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                IntentIntegrator integrator = new IntentIntegrator(PresenceActivity.this);
-                integrator.setPrompt("Scan a barcode or QRcode");
-                integrator.setOrientationLocked(false);
-                integrator.initiateScan();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{Manifest.permission.CAMERA},
+                                100);
+                    } else {
+                        IntentIntegrator integrator = new IntentIntegrator(PresenceActivity.this);
+                        integrator.setPrompt("Scan a barcode or QRcode");
+                        integrator.setOrientationLocked(false);
+                        integrator.initiateScan();
+                    }
+                } else {
+                    IntentIntegrator integrator = new IntentIntegrator(PresenceActivity.this);
+                    integrator.setPrompt("Scan a barcode or QRcode");
+                    integrator.setOrientationLocked(false);
+                    integrator.initiateScan();
+                }
+
             }
         });
 
         //Tarik data dari server berdasarkna idevent
         getDetailPresence(idEvent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
